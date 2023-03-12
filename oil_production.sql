@@ -82,7 +82,7 @@ WHERE p.code IS NOT NULL AND entity IS NOT 'World')
 
 SELECT entity, SUM(consumption), SUM(production), SUM(consumption)/SUM(production) as ratio_cons_prod,
 CASE WHEN SUM(consumption)/SUM(production) > 1 THEN 'Oil importers'
-WHEN (consumption)/SUM(production) < 1 THEN 'Oil Exporters'
+WHEN SUM(consumption)/SUM(production) < 1 THEN 'Oil Exporters'
 END AS label
 FROM cons_vs_prod
 GROUP BY entity
